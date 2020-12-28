@@ -1,0 +1,52 @@
+
+<body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+  <!-- Header -->
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0"><%= @survey.name %></h6>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <a href="<%= edit_survey_path %>" class="btn btn-neutral">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--   Page content-->
+<div class="container-fluid mt--6">
+  <div class="col">
+    <div class="card-header bg-transparent">
+      <div class="row align-items-center">
+        <div class="col">
+          <% @survey.questions.each do |question| %>
+            <div class="card">
+              <div class="col" style="margin-bottom: 20px; margin-top: 20px">
+                <ul class="list-group">
+                  <li class="list-group-item" style="background-color: #2e2e57; color: #dee2e6"><%= question.body %></li>
+                  <% question.answers.each do |answer| %>
+                    <% if answer.correct == true %>
+                      <li class="list-group-item" style="background-color: darkseagreen"><%= answer.body %></li>
+                    <%else %>
+                      <li class="list-group-item"><%= answer.body %></li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'dashboard.js' %>
+</body>
+
+
+

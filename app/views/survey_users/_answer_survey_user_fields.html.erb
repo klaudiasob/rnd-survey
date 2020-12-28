@@ -1,0 +1,27 @@
+<div class="nested-fields">
+  <div class="field">
+    <div class="card">
+      <ul class="list-group">
+        <li class="list-group-item" style="background-color: #2e2e57; color: #dee2e6"><%= f.object.question.body %></li>
+        <ol>
+          <% f.object.question.answers.each do |answer| %>
+            <div class="col" style="margin-bottom: 20px; margin-top: 20px">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="form-control"><%= answer.body %></span>
+                  <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2">
+                      <%= f.radio_button :answer_id, answer.id %>
+                        <%= f.hidden_field :question_id, value: f.object.question.id %>
+                      </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </ol>
+      </ul>
+    </div>
+  </div>
+</div>
+

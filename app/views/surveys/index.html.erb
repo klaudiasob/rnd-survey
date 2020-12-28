@@ -1,0 +1,74 @@
+<body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+  <!-- Header -->
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+            <h6 class="h2 text-white d-inline-block mb-0">My surveys</h6>
+          </div>
+          <div class="col-lg-6 col-5 text-right">
+            <a href="<%= new_survey_path %>" class="btn btn-neutral">New</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Page content-->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+              </div>
+              <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Surveys table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">Survey name</th>
+                <th scope="col">Users</th>
+                <th scope="col">Details</th>
+                <th scope="col">Link for users</th>
+                <th scope="col">Completed surveys</th>
+              </tr>
+              </thead>
+              <tbody>
+                <% @surveys.each do |survey| %>
+                <tr>
+                <th scope="row">
+                    <%= survey.name %>
+                  <td>
+                    <%= survey.survey_users.count %>
+                  </td>
+                  <td>
+                    <a href="<%= survey_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
+                  </td>
+                  <td>
+                    <a href="<%=  new_survey_user_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
+                  </td>
+                  <td>
+                    <a href="<%= survey_answers_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
+                  </td>
+                  </th>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'dashboard.js' %>
+</body>

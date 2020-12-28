@@ -1,0 +1,67 @@
+<body>
+<!-- Main content -->
+<div class="main-content" id="panel">
+
+  <!-- Header -->
+  <div class="header bg-primary pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <div class="row align-items-center py-4">
+          <div class="col-lg-6 col-7">
+<!--            <h6 class="h2 text-white d-inline-block mb-0"><%#= @survey_users.survey.name %></h6>-->
+            <h6 class="h2 text-white d-inline-block mb-0"><%= @survey_users.first.survey.name if @survey_users.exists? %></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--   Page content-->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+              </div>
+              <div class="col text-right">
+                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+              <tr>
+                <th scope="col">User</th>
+                <th scope="col">Answers</th>
+                <th scope="col">Date</th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <% @survey_users.each do |answer| %>
+
+                <tr>
+                  <th scope="row">
+                    <%= answer.user.nickname %>
+                  <td>
+                    <a href="<%= survey_user_path(id: answer) %>" class=" btn btn-sm btn-primary">Show</a>
+                  </td>
+                  <td>
+                    <%= answer.created_at %>
+                  </td>
+                  </th>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'dashboard.js' %>
+</body>
