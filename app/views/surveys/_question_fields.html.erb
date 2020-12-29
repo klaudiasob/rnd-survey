@@ -1,0 +1,22 @@
+<div class="nested-fields" style="margin-bottom: 35px">
+  <div class="field">
+    <h2 align="center" style="color: #f8f9fe">Question</h2>
+
+    <div class="form-group">
+      <div class="input-group">
+        <%= f.text_field :body, class: 'form-control', placeholder: "Body" %>
+        <div class="input-group-append">
+          <button class="btn btn-neutral" type="button"><%= link_to_remove_association 'Delete', f %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 align="center" style="color: #f8f9fe">Answers</h3>
+  <%= f.fields_for :answers do |answer| %>
+    <%= render 'answer_fields', f: answer %>
+  <% end %>
+  <div class="links btn btn-neutral">
+    <%= link_to_add_association 'Add answer', f, :answers %>
+  </div>
+</div>

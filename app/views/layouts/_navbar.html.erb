@@ -1,0 +1,33 @@
+<nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-center ml-auto ml-md-auto ">
+        <% if admin_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </a>
+            <div class="dropdown-menu  dropdown-menu-right ">
+              <div class="dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a href="<%= surveys_path %>" class="dropdown-item">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>My surveys</span>
+              </a>
+              <a href="<%= survey_users_path %>" class="dropdown-item">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>All answers</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'dropdown-item' do %>
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

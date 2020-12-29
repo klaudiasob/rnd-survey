@@ -7,12 +7,19 @@ class Question < ApplicationRecord
 
   accepts_nested_attributes_for :answers, reject_if: :all_blank, allow_destroy: true
   validate :at_least_two_answers
+  validate :only_one_correct_answer
 
   private
 
   def at_least_two_answers
     return if answers.size >= 2
 
-    errors.add(:answers, 'Pytanie musi zawierać minimum dwie odpowiedzi')
+    errors.add(:answers, 'At least two answers must exist')
+  end
+
+  def only_one_correct_answer
+    return if answers.select(&:correct?).size == 1
+
+    errors.add(:answers, 'There must be one correct answer to each question')
   end
 end

@@ -1,0 +1,19 @@
+<div class="nested-fields">
+  <div class="field">
+    <div class="form-group">
+      <div class="input-group">
+        <%= f.text_field :body, class: 'form-control', placeholder: "Answer" %>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-neutral">Correct?</button>
+          <div class="input-group-text">
+            <label class="custom-toggle">
+              <%= f.check_box :correct %>
+              <span class="custom-toggle-slider rounded-circle" data-label-off="No" data-label-on="Yes"></span>
+            </label>
+          </div>
+          <button class="btn btn-neutral" type="button"><%= link_to_remove_association 'Delete', f %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
