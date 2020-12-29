@@ -1,49 +1,29 @@
-<div id="error_explanation">
-  <ul>
-    <% @survey_user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-
-
 <body>
 <!-- Main content -->
 <div class="main-content" id="panel">
-  <!-- Header -->
-  <div class="header bg-primary pb-6">
-    <div class="container-fluid">
-      <div class="header-body">
-        <div class="row align-items-center py-4">
-          <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0"><%= @survey_user.survey.name %></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!--   Page content-->
-<div class="container-fluid mt--6">
-  <div class="col">
 
-    <%= form_for @survey_user, url: { action: 'create' } do |form| %>
-      <%= form.hidden_field :survey_id, value: @survey_user.survey.id %>
-      <%= form.text_field :user, class: 'form-control', placeholder: "Nickname", style: "margin-bottom: 20px" %>
-      <div class="card-header bg-transparent">
-        <div class="row align-items-center">
-          <div class="col">
-            <%= form.fields_for :answer_survey_users do |user_answer| %>
-              <%= render 'answer_survey_user_fields', f: user_answer %>
-            <% end %>
+  <!--   Page content-->
+  <div class="container-fluid mt--6">
+    <div class="col">
 
-            <div class="actions">
-              <%= form.submit "Submit", class: "actions btn btn-neutral float-right " %>
+      <%= form_for @survey_user, url: { action: 'create' } do |form| %>
+        <%= form.hidden_field :survey_id, value: @survey_user.survey.id %>
+        <%= form.text_field :user, class: 'form-control', placeholder: "Enter your nickname", style: "margin-bottom: 20px" %>
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
+            <div class="col">
+              <%= form.fields_for :answer_survey_users do |user_answer| %>
+                <%= render 'answer_survey_user_fields', f: user_answer %>
+              <% end %>
+
+              <div class="actions">
+                <%= form.submit "Submit", class: "actions btn btn-neutral float-right " %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= javascript_include_tag 'dashboard.js' %>

@@ -8,6 +8,13 @@
         </div>
       </div>
     </div>
+    <div id="error_explanation" class="h5 text-white d-inline-block mb-0">
+      <ul>
+        <% @survey.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 

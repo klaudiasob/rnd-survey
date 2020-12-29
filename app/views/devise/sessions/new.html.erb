@@ -4,6 +4,13 @@
     <div class="row justify-content-center">
       <div class="col-lg-5 col-md-7">
         <div class="card bg-secondary border border-soft mb-0">
+          <% if flash.alert %>
+            <div id=”error_explanation”>
+              <ul>
+                <li><%= flash.alert %></li>
+              </ul>
+            </div>
+          <% end %>
           <div class="card-header bg-transparent pb-5">
             <div class="text-center mt-2 mb-3"><small>Sign in</small></div>
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

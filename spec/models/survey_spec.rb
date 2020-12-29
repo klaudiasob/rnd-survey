@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Survey, type: :model do
   describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to accept_nested_attributes_for(:questions) }
   end
 
