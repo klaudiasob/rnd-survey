@@ -4,27 +4,24 @@ class SurveyUsersController < ApplicationController
   before_action :authenticate_admin!, only: %i[index index_survey]
 
   def index
-    @survey_users = SurveyUser.order('created_at DESC').page(params[:page])
+    @survey_users = SurveyUser.newest_first.page(params[:page])
   end
 
   def index_survey
-    @survey_users = SurveyUser.where(survey_id: params[:survey_id]).order('created_at DESC').page(params[:page])
+    @survey_users = SurveyUser.newest_first.where(survey_id: params[:survey_id]).page(params[:page])
   end
 
   def new
-    @survey_user = SurveyUser.new(survey_id: params[:survey_id])
-    @survey_user.survey.questions.each do |question|
-      @survey_user.answer_survey_users.build(question_id: question.id)
-    end
+    @survey_user = SurveyUserServices::Build.new(survey_id: params[:survey_id]).call
   end
 
   def create
-    @survey_user = SurveyUser.new(survey_user_params)
-    @survey_user.user = User.create_or_find_by(nickname: params[:survey_user][:user]) if params[:survey_user][:user].present?
-    if @survey_user.save
-      redirect_to survey_user_path(id: @survey_user), notice: 'Thanks for the answers!'
+    @survey_user = SurveyUser.new
+    result = SurveyUserServices::Create.new(survey_user: @survey_user, params: survey_user_params,
+                                            user_nickname: params[:survey_user][:user]).call
+    if result
+      redirect_to survey_user_path(id: @survey_user)
     else
-      @survey_user.user = nil
       render :new
     end
   end
@@ -36,6 +33,6 @@ class SurveyUsersController < ApplicationController
   private
 
   def survey_user_params
-    params.require(:survey_user).permit(:user_id, :survey_id, answer_survey_users_attributes: %i[survey_user_id answer_id question_id])
+    params.require(:survey_user).permit(:survey_id, answer_survey_users_attributes: %i[survey_user_id answer_id question_id])
   end
 end

@@ -9,4 +9,6 @@ class SurveyUser < ApplicationRecord
   paginates_per 5
 
   accepts_nested_attributes_for :answer_survey_users, reject_if: :all_blank, allow_destroy: true
+
+  scope :newest_first, -> { order(created_at: :desc) }
 end
