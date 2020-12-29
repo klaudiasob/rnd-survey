@@ -7,10 +7,13 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("@nathanvda/cocoon")
 
-window.jQuery = $;
-window.$ = $;
+import $ from "jquery";
+global.$ = $;
+global.jQuery = $;
+
+require("@nathanvda/cocoon")
+import("../src/dashboard")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
