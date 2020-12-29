@@ -1,8 +1,24 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+admin = Admin.create(email: 'admin@example.com', password: 'password')
+
+Survey.create(name: "Sample set of questions",
+              admin: admin,
+              questions_attributes: [
+                {
+                  body: "Which answer is correct?",
+                  answers_attributes: [
+                    { body: "1", correct: false },
+                    { body: "2", correct: true },
+                    { body: "3", correct: false }
+                  ],
+                },
+                {
+                  body: "Which answer is the longest?",
+                  answers_attributes: [
+                    { body: "This", correct: false },
+                    { body: "This one", correct: false },
+                    { body: "This one, of course", correct: true }
+                  ]
+                }
+              ])

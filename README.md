@@ -1,24 +1,45 @@
-# README
+# RnD Survey
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby [2.6.3]
+- Rails [6.0.3.4]
 
-Things you may want to cover:
+## Install
+#### 1. Check out the repository
 
-* Ruby version
+```bash
+git clone git@github.com:klaudiasob/rnd-survey.git
+```
 
-* System dependencies
+#### 2. Install gems
 
-* Configuration
+```ruby
+bundle install
+```
 
-* Database creation
+#### 3. Install javascript packages
 
-* Database initialization
+```ruby
+yarn install
+```
 
-* How to run the test suite
+#### 4. Create and setup the database
 
-* Services (job queues, cache servers, search engines, etc.)
+Run the following commands to setup the database and populate it with seed data.
 
-* Deployment instructions
+```ruby
+bundle exec rake db:setup
+```
 
-* ...
+#### 5. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+bundle exec rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
+
+#### Test data
+You can use following account to login into the application:
+- email: `admin@example.com`; password: `password`

@@ -1,4 +1,3 @@
-<body>
 <!-- Main content -->
 <div class="main-content" id="panel">
   <!-- Header -->
@@ -27,11 +26,9 @@
               <div class="col" style="margin-bottom: 20px; margin-top: 20px">
                 <ul class="list-group">
                   <li class="list-group-item" style="background-color: #2e2e57; color: #dee2e6"><%= user_answer.question.body %></li>
-                  <% if user_answer.answer.correct == true %>
-                    <li class="list-group-item" style="background-color: darkseagreen"><%= user_answer.answer.body %></li>
-                  <% else %>
-                    <li class="list-group-item" style="background-color: indianred"><%= user_answer.answer.body %></li>
-                  <% end %>
+                  <li class="list-group-item" style="background-color: <%= user_answer.answer.correct? ? 'darkseagreen' : 'indianred' %>">
+                    <%= user_answer.answer.body %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -41,5 +38,3 @@
     </div>
   </div>
 </div>
-<%= javascript_include_tag 'dashboard.js' %>
-</body>

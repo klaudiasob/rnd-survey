@@ -17,27 +17,25 @@ class SurveysController < ApplicationController
   def edit; end
 
   def create
-    @survey = Survey.new(survey_params)
-    @survey.admin = current_admin
+    @survey = Survey.new(survey_params.merge(admin: current_admin))
     if @survey.save
-      redirect_to @survey, notice: 'Survey was successfully created.'
+      redirect_to @survey
     else
       render :new
     end
   end
 
   def update
-    @survey.admin = current_admin
     if @survey.update(survey_params)
-      redirect_to @survey, notice: 'Survey was successfully updated.'
+      redirect_to @survey
     else
       render :edit
     end
   end
 
   def destroy
-    @survey.destroy
-    redirect_to survey_url, notice: 'Survey was successfully destroyed.'
+    @survey.destroy!
+    redirect_to surveys_path
   end
 
   private
@@ -48,6 +46,7 @@ class SurveysController < ApplicationController
 
   def survey_params
     params.require(:survey).permit(:name, :admin_id,
-                                   questions_attributes: [:id, :body, :_destroy, { answers_attributes: %i[id body correct _destroy] }])
+                                   questions_attributes: [:id, :body, :_destroy,
+                                                          { answers_attributes: %i[id body correct _destroy] }])
   end
 end

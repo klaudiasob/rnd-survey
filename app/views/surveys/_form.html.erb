@@ -1,4 +1,23 @@
-<body>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-white d-inline-block mb-0"><%= header %></h6>
+        </div>
+      </div>
+    </div>
+    <div id="error_explanation" class="h5 text-white d-inline-block mb-0">
+      <ul>
+        <% @survey.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- Main content -->
 <div class="main-content" id="panel">
   <!--   Page content-->
@@ -21,7 +40,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col">
                   <%= form.fields_for :questions do |question| %>
@@ -29,8 +47,6 @@
                   <% end %>
                 </div>
               </div>
-
-
               <%= form.submit :Submit, class: "actions btn btn-neutral float-right " %>
             <% end %>
           </div>
@@ -39,5 +55,3 @@
     </div>
   </div>
 </div>
-<%= javascript_include_tag 'dashboard.js' %>
-</body>
