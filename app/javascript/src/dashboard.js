@@ -25,7 +25,7 @@
 
 var Cookies = require('js-cookie');
 
-var Layout = (function() {
+var Layout = (function LayoutFn() {
 
 	$('.navbar-main .dropdown').on('hide.bs.dropdown', function () {
         var $this = $(this).find('.dropdown-menu');
@@ -197,6 +197,7 @@ var Layout = (function() {
         }
     })
 
+	$(document).on('turbolinks:load', LayoutFn)
 })();
 
 //
