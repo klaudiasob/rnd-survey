@@ -6,6 +6,7 @@ class SurveyUser < ApplicationRecord
   belongs_to :user
   has_many :answer_survey_users
   has_many :answers, through: :answer_survey_users
+  paginates_per 5
 
   accepts_nested_attributes_for :answer_survey_users, reject_if: :all_blank, allow_destroy: true
 end

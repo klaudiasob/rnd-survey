@@ -4,11 +4,11 @@ class SurveyUsersController < ApplicationController
   before_action :authenticate_admin!, only: %i[index index_survey]
 
   def index
-    @survey_users = SurveyUser.all
+    @survey_users = SurveyUser.order('created_at DESC').page(params[:page])
   end
 
   def index_survey
-    @survey_users = SurveyUser.where(survey_id: params[:survey_id])
+    @survey_users = SurveyUser.where(survey_id: params[:survey_id]).order('created_at DESC').page(params[:page])
   end
 
   def new

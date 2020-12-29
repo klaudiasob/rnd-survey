@@ -24,9 +24,8 @@
           <div class="card-header border-0">
             <div class="row align-items-center">
               <div class="col">
-              </div>
-              <div class="col text-right">
-                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                <%= paginate @surveys, theme: 'twitter-bootstrap-4',
+                             pagination_class: "pagination-lg justify-content-center", nav_class: "d-inline-b" %>
               </div>
             </div>
           </div>
@@ -43,9 +42,9 @@
               </tr>
               </thead>
               <tbody>
-                <% @surveys.each do |survey| %>
+              <% @surveys.each do |survey| %>
                 <tr>
-                <th scope="row">
+                  <th scope="row">
                     <%= survey.name %>
                   <td>
                     <%= survey.survey_users.count %>
@@ -54,7 +53,7 @@
                     <a href="<%= survey_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
                   </td>
                   <td>
-                    <a href="<%=  new_survey_user_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
+                    <a href="<%= new_survey_user_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
                   </td>
                   <td>
                     <a href="<%= survey_answers_path(survey) %>" class=" btn btn-sm btn-primary">Show</a>
