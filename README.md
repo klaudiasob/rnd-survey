@@ -7,7 +7,7 @@
 #### 1. Check out the repository
 
 ```bash
-git clone git@github.com:klaudiasob/rnd-survey.git
+git clone https://github.com/klaudiasob/rnd-survey.git
 ```
 
 #### 2. Install gems
