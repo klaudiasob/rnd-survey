@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+// Bootstrap functions
+@import '../stylesheets/bootstrap/functions';
+@import "../stylesheets/bootstrap/mixins";
+
+// Argon functions
+@import "../stylesheets/custom/functions";
+@import "../stylesheets/custom/variables";
+@import "../stylesheets/bootstrap/variables";
+
+// Argon mixins
+@import "../stylesheets/custom/mixins";
+
+// Bootstrap components
+@import "../stylesheets/bootstrap/root";
+@import "../stylesheets/bootstrap/reboot";
+@import "../stylesheets/bootstrap/type";
+@import "../stylesheets/bootstrap/images";
+@import "../stylesheets/bootstrap/code";
+@import "../stylesheets/bootstrap/grid";
+@import "../stylesheets/bootstrap/tables";
+@import "../stylesheets/bootstrap/forms";
+@import "../stylesheets/bootstrap/buttons";
+@import "../stylesheets/bootstrap/transitions";
+@import "../stylesheets/bootstrap/dropdown";
+@import "../stylesheets/bootstrap/button-group";
+@import "../stylesheets/bootstrap/input-group";
+@import "../stylesheets/bootstrap/custom-forms";
+@import "../stylesheets/bootstrap/nav";
+@import "../stylesheets/bootstrap/navbar";
+@import "../stylesheets/bootstrap/card";
+@import "../stylesheets/bootstrap/breadcrumb";
+@import "../stylesheets/bootstrap/pagination";
+@import "../stylesheets/bootstrap/badge";
+@import "../stylesheets/bootstrap/jumbotron";
+@import "../stylesheets/bootstrap/alert";
+@import "../stylesheets/bootstrap/progress";
+@import "../stylesheets/bootstrap/media";
+@import "../stylesheets/bootstrap/list-group";
+@import "../stylesheets/bootstrap/close";
+@import "../stylesheets/bootstrap/modal";
+@import "../stylesheets/bootstrap/tooltip";
+@import "../stylesheets/bootstrap/popover";
+@import "../stylesheets/bootstrap/carousel";
+@import "../stylesheets/bootstrap/utilities";
+@import "../stylesheets/bootstrap/print";
+
+// Argon components
+@import '../stylesheets/custom/components';
+@import '../stylesheets/custom/utilities';
+@import '../stylesheets/custom/vendors';
