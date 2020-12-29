@@ -5,6 +5,7 @@ class Survey < ApplicationRecord
   has_many :questions, inverse_of: :survey
   has_many :survey_users
   has_many :users, through: :survey_users
+  paginates_per 5
 
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
   validates_presence_of :name

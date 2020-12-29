@@ -1,7 +1,6 @@
 <body>
 <!-- Main content -->
 <div class="main-content" id="panel">
-
   <!-- Header -->
   <div class="header bg-primary pb-6">
     <div class="container-fluid">
@@ -22,9 +21,8 @@
           <div class="card-header border-0">
             <div class="row align-items-center">
               <div class="col">
-              </div>
-              <div class="col text-right">
-                <a href="#!" class="btn btn-sm btn-primary">See all</a>
+                <%= paginate @survey_users, theme: 'twitter-bootstrap-4',
+                             pagination_class: "pagination-lg justify-content-center", nav_class: "d-inline-b" %>
               </div>
             </div>
           </div>

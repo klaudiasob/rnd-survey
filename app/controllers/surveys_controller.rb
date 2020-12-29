@@ -5,7 +5,7 @@ class SurveysController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @surveys = Survey.all
+    @surveys = Survey.order('updated_at DESC').page(params[:page])
   end
 
   def show; end
@@ -27,6 +27,7 @@ class SurveysController < ApplicationController
   end
 
   def update
+    @survey.admin = current_admin
     if @survey.update(survey_params)
       redirect_to @survey, notice: 'Survey was successfully updated.'
     else
