@@ -19,6 +19,4 @@ Rails.application.routes.draw do
     resources :users, except: :index, controller: 'survey_users'
     get 'answers', to: 'survey_users#index_survey'
   end
-
-
 end

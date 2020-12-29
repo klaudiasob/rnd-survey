@@ -14,11 +14,4 @@ RSpec.describe Survey, type: :model do
     it { is_expected.to have_many(:survey_users).class_name('SurveyUser') }
     it { is_expected.to have_many(:users).with_foreign_key('user_id') }
   end
-
-  context 'when there is no questions' do
-    it "validates that there is at least one question" do
-      subject.validate
-      expect(subject.errors[:questions]).to include('Ankieta musi zawierać conajmniej jedno pytanie')
-    end
-  end
 end

@@ -17,9 +17,8 @@ class Question < ApplicationRecord
     errors.add(:answers, 'At least two answers must exist')
   end
 
-
   def only_one_correct_answer
-    return if answers.select { |answer| answer.correct? }.size == 1
+    return if answers.select(&:correct?).size == 1
 
     errors.add(:answers, 'There must be one correct answer to each question')
   end
