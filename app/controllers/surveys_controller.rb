@@ -2,6 +2,7 @@
 
 class SurveysController < ApplicationController
   before_action :set_survey, only: %i[show edit update destroy]
+  before_action :authenticate_admin!
 
   def index
     @surveys = Survey.all
@@ -17,6 +18,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
+    @survey.admin = current_admin
     if @survey.save
       redirect_to @survey, notice: 'Survey was successfully created.'
     else

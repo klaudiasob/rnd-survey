@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class SurveyUsersController < ApplicationController
+  before_action :authenticate_admin!, only: %i[index index_survey]
+
   def index
     @survey_users = SurveyUser.all
   end
@@ -18,10 +20,11 @@ class SurveyUsersController < ApplicationController
 
   def create
     @survey_user = SurveyUser.new(survey_user_params)
-    @survey_user.user = User.find_by(nickname: params[:survey_user][:user])
+    @survey_user.user = User.create_or_find_by(nickname: params[:survey_user][:user]) if params[:survey_user][:user].present?
     if @survey_user.save
       redirect_to survey_user_path(id: @survey_user), notice: 'Thanks for the answers!'
     else
+      @survey_user.user = nil
       render :new
     end
   end
